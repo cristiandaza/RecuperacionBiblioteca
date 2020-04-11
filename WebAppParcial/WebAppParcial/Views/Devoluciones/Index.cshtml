@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebAppParcial.Models.Devolucion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Devoluciones</h1>
+
+<p>
+    <a asp-action="Create"><button class="btn btn-primary">Nuevo</button></a>
+</p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Prestamo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prestamo.PrestamoID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.DevolucionID" class="btn btn-success">Editar<i class="fas fa-edit"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.DevolucionID"class="btn btn-warning">Detalles<i class="fas fa-th-list"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.DevolucionID"class="btn btn-danger">Eliminar<i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

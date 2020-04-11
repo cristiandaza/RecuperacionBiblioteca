@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebAppParcial.Models.Libro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Libros</h1>
+
+<p>
+    <a asp-action="Create"><button class="btn btn-primary">Nuevo</button></a>
+</p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroPaginas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Editorial)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Area.AreaID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroPaginas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Autor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Editorial)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.LibroID" class="btn btn-success">Editar<i class="fas fa-edit"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.LibroID"class="btn btn-warning">Detalles<i class="fas fa-th-list"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.LibroID"class="btn btn-danger">Eliminar<i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
